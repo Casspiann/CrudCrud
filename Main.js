@@ -30,17 +30,17 @@ function printDetail(e){
     let myobj = {
         FirstName:firstName,
         LastName:lastName,
-        Gender:Gender
-    };
-    let myobject ={
+        Gender:Gender,
         Email:Email,
         Password:Password,
         PhoneNumber:phoneNumber
     };
-    let myobjSerialize = JSON.stringify(myobj);
-    localStorage.setItem('myobj',myobjSerialize);
-    let myObjectSerialize = JSON.stringify(myobject);
-    localStorage.setItem('myobject',myObjectSerialize);
+    
+       
+    
+    
+    localStorage.setItem(Email,JSON.stringify(myobj));
+   
     //console.log(myObjectSerialize);
     //console.log(myobjSerialize);
 
