@@ -1,45 +1,46 @@
-//All method localstorage and session storage methods are same
 var item = document.getElementById("Submit");
- //cokiees
- //document.cookie = 'firstName=john; expires=' + new Date(2023, 0, 1).toUTCString();
-//console.log(document.cookie);
-//console.log(123);
+    var itemList = document.getElementById('items');
 
-item.addEventListener('click',printDetail);
-function printDetail(e){
-    
-    var firstName = document.getElementById("firstName").value;
-   // localStorage.setItem("firstName",firstName);
-    //console.log(localStorage.getItem('firstName'));
-    var lastName = document.getElementById("lastName").value;
-   // localStorage.setItem("lastName",lastName);
-   // console.log(localStorage.getItem('lastName'));
-    var Gender = document.getElementById("gender").value;
-    //localStorage.setItem("Gender",Gender);
-    //console.log(localStorage.getItem('Gender'));
+    item.addEventListener('click', printDetail);
 
-    var Email  = document.getElementById("email").value;
-    //localStorage.setItem("Email",Email);
-    //console.log(localStorage.getItem('Email'));
-    var Password = document.getElementById("Password").value;
-    //localStorage.setItem("password",Password);
-    //console.log(localStorage.getItem('password'));
-    var phoneNumber = document.getElementById("Phone").value;
-    //localStorage.setItem("Phone.no",phoneNumber);
-    //console.log(localStorage.getItem('Phone.no'));
-    let myobj = {
-        FirstName:firstName,
-        LastName:lastName,
-        Gender:Gender,
-        Email:Email,
-        Password:Password,
-        PhoneNumber:phoneNumber
-    };
+    function printDetail(e) {
+      var firstName = document.getElementById("firstName").value;
+      var lastName = document.getElementById("lastName").value;
+      var Gender = document.getElementById("gender").value;
+      var Email = document.getElementById("email").value;
+      var Password = document.getElementById("Password").value;
+      var phoneNumber = document.getElementById("Phone").value;
+
+      var myobj = {
+        FirstName: firstName,
+        LastName: lastName,
+        Gender: Gender,
+        Email: Email,
+        Password: Password,
+        PhoneNumber: phoneNumber
+      };
+
+      var myobjSerialize = JSON.stringify(myobj);
+      localStorage.setItem(Email, myobjSerialize);
+      
+
+      var li = document.createElement('li');
+      li.appendChild(document.createTextNode(myobjSerialize));
+
+      var delbutton = document.createElement('button');
+      delbutton.appendChild(document.createTextNode('DELETE'));
+      delbutton.className = "btn btn-dark";
     
-       
+      delbutton.addEventListener('click', function () {
+        // Delete user when the delete button is clicked
+        localStorage.removeItem(Email);
+        li.remove();
+      });
+
+      li.appendChild(delbutton);
+      itemList.appendChild(li);
+    }
     
-    
-    localStorage.setItem(Email,JSON.stringify(myobj));
    
     //console.log(myObjectSerialize);
     //console.log(myobjSerialize);
@@ -48,4 +49,3 @@ function printDetail(e){
    
    
 
-}
