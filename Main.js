@@ -29,15 +29,37 @@ var item = document.getElementById("Submit");
 
       var delbutton = document.createElement('button');
       delbutton.appendChild(document.createTextNode('DELETE'));
-      delbutton.className = "btn btn-dark";
+      delbutton.className = "btn btn-dark mr-2";
+      var editbutton = document.createElement('button');
+      editbutton.appendChild(document.createTextNode('Edit'));
+      editbutton.className = "btn btn-success mr-2";
+      editbutton.addEventListener('click',function(){
+        var storedData = localStorage.getItem(Email);
+        var userData = JSON.parse(storedData);
+
+        // Update the form fields with the stored data
+        document.getElementById("firstName").value = userData.FirstName;
+        document.getElementById("lastName").value = userData.LastName;
+        document.getElementById("gender").value = userData.Gender;
+        document.getElementById("email").value = userData.Email;
+        document.getElementById("Password").value = userData.Password;
+        document.getElementById("Phone").value = userData.PhoneNumber;
+        
+        // Remove the entry from local storage
+        localStorage.removeItem(Email);
+        // Remove the list item from the display
+        li.remove();
+
+      })
     
       delbutton.addEventListener('click', function () {
         // Delete user when the delete button is clicked
         localStorage.removeItem(Email);
         li.remove();
       });
-
+      li.appendChild(editbutton);
       li.appendChild(delbutton);
+      
       itemList.appendChild(li);
     }
     
