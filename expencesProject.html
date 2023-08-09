@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExpenscaAmmount</title>
+</head>
+<body>
+    <form>
+        <label for = "ExpenscaAmmount" >Choose ExpenscaAmmount:</label>
+        <input type="text" id="ExpenscaAmmount" name = "ExpenscaAmmount">
+        <label for = "description">Choose Description:</label>
+        <input type="text" id="description" name="description">
+        <label for="catagory">Choose a category:</label>
+        <select name="catagory" id="catagory" value="fuel">
+            <option value="fuel">fuel</option>
+            <option value="Movie">Movie</option>
+            <option value="food">Food</option>
+            <option value="Money">Money</option>
+        </select>
+        <input id = "Submit" type="button" class="btn btn-primary" value="Add Expences">
+        <ul id = "items"  class="ui">
+
+        </ul>
+    </form>
+    <script src="run.js"></script>
+    
+</body>
+</html>
