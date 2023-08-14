@@ -69,12 +69,29 @@ function createListItem(email, userData) { // Changed 'cate' to 'email'
         document.querySelector("#name").value = userData.Name;
         document.querySelector("#Email").value = userData.Email;
         document.querySelector('#Phoneno').value = userData.Phone;
-        localStorage.removeItem(email); // Used 'email' instead of 'Email'
+        var idee =userData._id;
+        //console.log(id);
+        axios.delete("https://crudcrud.com/api/bc9448e2993b41dda59d887ac58ccd7b/appointmentData/"+idee)
+        .then((responce)=>{
+            console.log(responce);
+        })
+        .catch((error)=>{
+            console.log(error);
+        })
         li.remove();
     });
 
     delbutton.addEventListener('click', function () {
-        localStorage.removeItem(email); // Used 'email' instead of 'Email'
+        //localStorage.removeItem(email); // Used 'email' instead of 'Email'
+        var id =userData._id;
+        //console.log(id);
+        axios.delete("https://crudcrud.com/api/bc9448e2993b41dda59d887ac58ccd7b/appointmentData/"+id)
+        .then((responce)=>{
+            console.log(responce);
+        })
+        .catch((error)=>{
+            console.log(error);
+        })
         li.remove();
     });
 
