@@ -4,14 +4,24 @@ var itemList = document.getElementById('items');
 document.addEventListener('DOMContentLoaded', addlist);
 
 function addlist() {
-    for (let i = 0; i < localStorage.length; i++) {
+    axios.get("https://crudcrud.com/api/bc9448e2993b41dda59d887ac58ccd7b/appointmentData")
+    .then((response)=>{
+        console.log(response);
+        for(var i=0;i<response.data.length;i++){
+            createListItem(response.data[i].Email,response.data[i]);
+        }
+    })
+    .catch((error)=>{
+        console.log(error);
+    })
+    /*for (let i = 0; i < localStorage.length; i++) {
         var key = localStorage.key(i);
         var storedData = localStorage.getItem(key);
         var Data = JSON.parse(storedData);
         if (Data) {
             createListItem(key, Data);
         }
-    }
+    }*/
 }
 
 item.addEventListener('click', printDetail);
@@ -26,19 +36,19 @@ function printDetail(e) {
         Email: Email,
         Phone:phone
     };
-    var myobjSerialize = JSON.stringify(obj);
-    localStorage.setItem(Email, myobjSerialize);
+    //var myobjSerialize = JSON.stringify(obj);
+    //localStorage.setItem(Email, myobjSerialize);
    axios.post("https://crudcrud.com/api/bc9448e2993b41dda59d887ac58ccd7b/appointmentData",obj)
    .then((Response)=>{
-   // createListItem(Response.Email, Response.data);
-    console.log(Response);
+    createListItem(Response.data.Email, Response.data);
+    //console.log(Response);
    })
    .catch((err)=>{
     console.log(err);
    })
-    var storedData = localStorage.getItem(Email);
-    var userData = JSON.parse(storedData);
-    createListItem(Email,userData);
+  //  var storedData = localStorage.getItem(Email);
+  //  var userData = JSON.parse(storedData);
+  //  createListItem(Email,userData);
     
 }
 
